@@ -55,21 +55,27 @@ body {
   margin: 0 auto;
 }
 
+.caption {
+  font-size: 18px;
+  margin-top: 15px;
+  text-align: center;
+}
+
 /* Container for the cards */
 .timeline-container {
-  max-width: 1093px;
+  max-width: 1090px;
   margin: 0 auto;
   padding-top: 50px;
   display: flex;
   overflow-x: auto; /* Enable horizontal scrolling */
   gap: 24px;
-  padding: 30px 10px; /* Add padding to avoid scrollbar overlap */
+  padding: 30px 12px; /* Add padding to avoid scrollbar overlap */
+  scroll-snap-type: x mandatory; /* Enable scroll snap */
 }
 
 /* Individual timeline card */
 .timeline-card {
   background-color: #fff;
-  border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   padding: 20px;
   min-width: 250px; /* Minimum width for each card */
@@ -79,6 +85,7 @@ body {
   position: relative;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s; /* Add transition for hover effects */
+  scroll-snap-align: start; /* Snap each card to the start */
 }
 .timeline-card h2 {
   font-size: 26px; /* Slightly larger heading */
@@ -105,7 +112,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 60, 116, 0.9); /* Update overlay color with rgba */
   color: #fff;
   padding: 20px;
   box-sizing: border-box;
@@ -117,7 +124,7 @@ body {
 /* Hover effects */
 .timeline-card:hover {
   transform: scale(1.05); /* Slightly enlarge the card */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Add a larger shadow */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add a larger shadow */
 }
 .timeline-card:hover p {
   display: block;
