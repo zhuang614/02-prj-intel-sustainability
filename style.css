@@ -149,4 +149,8 @@ body {
     min-width: 100%; /* Full width for each card on smaller screens */
     height: auto; /* Adjust height for smaller screens */
   }
+  .caption {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
 }
