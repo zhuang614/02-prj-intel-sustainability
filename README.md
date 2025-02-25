@@ -1,1 +1,1 @@
-# project-2-intel-sustainability-timeline
+# Project 2: Intel Sustainability Timeline
