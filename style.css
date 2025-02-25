@@ -71,7 +71,7 @@ body {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  padding: 24px;
+  padding: 20px;
   min-width: 250px; /* Minimum width for each card */
   display: flex;
   flex-direction: column;
@@ -99,6 +99,12 @@ body {
   }
   .hero p {
     font-size: 16px;
+  }
+  .timeline-container {
+    flex-direction: column; /* Display as a column on narrow screens */
+    overflow-x: visible; /* Disable horizontal scrolling */
+    gap: 15px;
+    padding-top: 0;
   }
   .timeline-card {
     min-width: 100%; /* Full width for each card on smaller screens */
