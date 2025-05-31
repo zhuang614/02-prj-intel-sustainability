@@ -1,91 +1,129 @@
-/* Simple, beginner-friendly CSS for Intel Timeline */
+/* Intel Timeline - Beginner-friendly CSS with Intel-inspired design */
 
-/* Style the header section */
+/* Header styles */
 header {
   background-color: #0071c5; /* Intel blue */
   color: white;
   text-align: center;
-  padding: 30px 10px;
+  padding: 32px 10px 24px 10px;
+  border-bottom: 4px solid #00baff; /* Accent line */
 }
 
-/* Style the Intel logo */
+/* Intel logo */
 header img {
   width: 120px;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
-/* Style the timeline section */
+/* Main Heading */
+h1 {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 2em;
+  margin: 10px 0 8px 0;
+  letter-spacing: 1px;
+}
+
+/* Subheading / Description */
+header p {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 1.15em;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #e6f2fa;
+}
+
+/* Timeline section */
 section {
-  display: flex;                  /* Arrange cards in a row */
-  flex-direction: row;            /* Horizontal layout on large screens */
-  overflow-x: auto;               /* Enable horizontal scrolling */
-  gap: 20px;                      /* Space between cards */
-  padding: 20px 10px;
-  background: #e6f2fa;            /* Light blue background */
-  scroll-snap-type: x mandatory;  /* Enable scroll snap for horizontal scrolling */
+  display: flex; /* Use Flexbox for layout */
+  flex-direction: row; /* Horizontal cards on large screens */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 24px; /* Space between cards */
+  padding: 28px 16px;
+  background: #e6f2fa;
+  scroll-snap-type: x mandatory; /* Smooth horizontal scroll snap */
+  scroll-behavior: smooth; /* Smooth scrolling effect */
 }
 
-/* Style each milestone card */
+/* Timeline card styles */
 section > div {
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.25); /* Darker and wider shadow */
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 113, 197, 0.15), 0 2px 8px rgba(0,0,0,0.10);
   border: 2px solid #0071c5;
   width: 250px;
-  min-width: 250px;               /* Keep cards the same size when scrolling */
-  padding: 16px;
-  flex-shrink: 0;                 /* Prevent cards from shrinking */
-  transition: box-shadow 0.3s, transform 0.3s;
-  /* Make sure text is always visible */
+  min-width: 250px;
+  padding: 18px 14px 16px 14px;
+  flex-shrink: 0;
+  transition: box-shadow 0.3s, transform 0.3s; /* Smooth shadow and transform */
   color: #222;
+  scroll-snap-align: start; /* Snap each card to the start */
+  font-family: 'Segoe UI', Arial, sans-serif;
+  position: relative;
 }
 
-/* Make sure all text in the card is always visible */
-section > div p,
-section > div h2,
-section > div h3 {
-  display: block;
-  opacity: 1;
-  max-height: none;
-  transition: none;
-}
-
-/* Card hover effect for interactivity and engagement */
+/* Card hover effect: shadow and scale for dynamic feel */
 section > div:hover {
-  box-shadow: 0 16px 48px rgba(0,0,0,0.40);   /* Even darker and wider shadow on hover */
-  transform: translateY(-10px) scale(1.05) rotate(-1deg); /* Move up, scale, and slight rotate */
-  transition: box-shadow 0.3s, transform 0.3s;
+  box-shadow: 0 16px 48px rgba(0,113,197,0.25), 0 8px 32px rgba(0,0,0,0.20);
+  transform: scale(1.05) translateY(-10px); /* Slightly bigger and moves up */
+  border-color: #00baff;
 }
 
-/* Style images inside cards */
+/* Card headings */
+section h2 {
+  color: #0071c5;
+  font-size: 1.2em;
+  margin: 0 0 2px 0;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+section h3 {
+  color: #222;
+  font-size: 1.05em;
+  margin: 0 0 10px 0;
+  font-weight: normal;
+}
+
+/* Card images - all 9 cards use custom AI-generated images named 1.jpg to 9.jpg */
 section img {
-  width: 100%;           /* Image fills the card width */
-  height: 140px;         /* Set a fixed height for all images */
-  object-fit: cover;     /* Fill the area, cropping if needed */
+  width: 100%;
+  height: 140px;
+  object-fit: cover; /* Fill the area, cropping if needed */
   border-radius: 8px;
   margin-bottom: 10px;
-  background: #e6f2fa;   /* Optional: adds a background color behind images */
+  background: #e6f2fa;
+  border: 1px solid #cce6f7;
 }
 
-/* Show the full image, but focus on the top for 7.jpg */
-section img[src$="7.jpg"] {
-  object-fit: cover;     /* Fill the area, cropping if needed */
-  object-position: bottom;  /* Show the top part of the image */
+/* Hide milestone details by default, show on hover */
+.details {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s, max-height 0.3s;
+  font-size: 0.98em;
+  color: #333;
+  background: #f0f8ff;
+  border-radius: 6px;
+  padding: 0 6px;
+  margin-top: 8px;
 }
 
-/* Show the full image, but focus on the bottom for 8.jpg */
-section img[src$="8.jpg"] {
-  object-fit: cover;     /* Fill the area, cropping if needed */
-  object-position: top; /* Show the bottom part of the image */
+/* Reveal details smoothly on card hover */
+section > div:hover .details {
+  opacity: 1;
+  max-height: 200px;
+  padding: 8px 6px;
 }
 
 /* Responsive: Stack timeline vertically on small screens */
 @media (max-width: 700px) {
   section {
-    flex-direction: column;   /* Stack cards vertically */
-    gap: 16px;
-    overflow-x: visible;      /* No horizontal scroll needed */
-    scroll-snap-type: none;   /* Disable scroll snap on small screens */
+    flex-direction: column;
+    gap: 18px;
+    overflow-x: visible;
+    scroll-snap-type: none;
+    padding: 16px 4px;
   }
   section > div {
     width: 100%;
