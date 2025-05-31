@@ -101,7 +101,7 @@ section img[src$="7.jpg"] {
   object-position: bottom;/* Focus on the bottom (lower half) of the image */
 }
 
-/* Hide milestone details by default, show on hover */
+/* Hide milestone details by default */
 .details {
   opacity: 0;
   max-height: 0;
@@ -115,7 +115,7 @@ section img[src$="7.jpg"] {
   margin-top: 8px;
 }
 
-/* Reveal details smoothly on card hover */
+/* Show details on hover for desktop */
 section > div:hover .details {
   opacity: 1;
   max-height: 200px;
@@ -134,5 +134,21 @@ section > div:hover .details {
   section > div {
     width: 100%;
     min-width: 0;
+  }
+  /* Make sure details always extend downward */
+  .details {
+    position: static;      /* Keep details in normal flow */
+    width: 100%;           /* Take full width of the card */
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: auto;
+    z-index: 1;
+  }
+  section > div:active .details,
+  section > div:focus .details {
+    opacity: 1;
+    max-height: 200px;
+    padding: 8px 6px;
   }
 }

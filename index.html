@@ -137,5 +137,35 @@
     </div>
   </section>
   <p>Scroll to view timeline | Hover over cards to learn more!</p>
+
+  <style>
+    /* Make timeline cards the same width as the header/banner on mobile */
+    @media (max-width: 700px) {
+      section {
+        flex-direction: column;   /* Stack cards vertically */
+        gap: 18px;
+        overflow-x: visible;
+        scroll-snap-type: none;
+        padding: 16px 0;          /* Remove side padding for full width */
+      }
+      section > div {
+        width: 100%;              /* Card fills the available width */
+        min-width: 0;
+        box-sizing: border-box;   /* Include padding and border in width */
+        margin: 0;                /* Remove any default margin */
+        border-radius: 0;         /* Optional: match header's straight edges */
+        left: 0;
+        right: 0;
+        transition: box-shadow 0.3s, transform 0.3s;
+      }
+      /* Prevent card from growing wider on hover */
+      section > div:hover {
+        transform: none;
+        width: 100%;
+        left: 0;
+        right: 0;
+      }
+    }
+  </style>
 </body>
 </html>
