@@ -95,6 +95,12 @@ section img {
   border: 1px solid #cce6f7;
 }
 
+/* Show the lower half of img/7.jpg in the card */
+section img[src$="7.jpg"] {
+  object-fit: cover;      /* Fill the area, cropping if needed */
+  object-position: bottom;/* Focus on the bottom (lower half) of the image */
+}
+
 /* Hide milestone details by default, show on hover */
 .details {
   opacity: 0;
