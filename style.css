@@ -36,7 +36,18 @@ section > div {
   padding: 16px;
   flex-shrink: 0;                 /* Prevent cards from shrinking */
   transition: box-shadow 0.3s, transform 0.3s;
-  scroll-snap-align: start;       /* Snap each card to the start when scrolling */
+  /* Make sure text is always visible */
+  color: #222;
+}
+
+/* Make sure all text in the card is always visible */
+section > div p,
+section > div h2,
+section > div h3 {
+  display: block;
+  opacity: 1;
+  max-height: none;
+  transition: none;
 }
 
 /* Card hover effect for interactivity and engagement */
@@ -48,9 +59,24 @@ section > div:hover {
 
 /* Style images inside cards */
 section img {
-  width: 100%;
+  width: 100%;           /* Image fills the card width */
+  height: 140px;         /* Set a fixed height for all images */
+  object-fit: cover;     /* Fill the area, cropping if needed */
   border-radius: 8px;
   margin-bottom: 10px;
+  background: #e6f2fa;   /* Optional: adds a background color behind images */
+}
+
+/* Show the full image, but focus on the top for 7.jpg */
+section img[src$="7.jpg"] {
+  object-fit: cover;     /* Fill the area, cropping if needed */
+  object-position: bottom;  /* Show the top part of the image */
+}
+
+/* Show the full image, but focus on the bottom for 8.jpg */
+section img[src$="8.jpg"] {
+  object-fit: cover;     /* Fill the area, cropping if needed */
+  object-position: top; /* Show the bottom part of the image */
 }
 
 /* Responsive: Stack timeline vertically on small screens */
