@@ -48,7 +48,8 @@ section {
 section > div {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 113, 197, 0.15), 0 2px 8px rgba(0,0,0,0.10);
+  /* Darker and wider shadow for all cards */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0,0,0,0.18);
   border: 2px solid #0071c5;
   width: 250px;
   min-width: 250px;
@@ -61,9 +62,9 @@ section > div {
   position: relative;
 }
 
-/* Card hover effect: shadow and scale for dynamic feel */
+/* Card hover effect: even darker and wider shadow */
 section > div:hover {
-  box-shadow: 0 16px 48px rgba(0,113,197,0.25), 0 8px 32px rgba(0,0,0,0.20);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.40), 0 8px 32px rgba(0,0,0,0.28);
   transform: scale(1.05) translateY(-10px); /* Slightly bigger and moves up */
   border-color: #00baff;
 }
@@ -96,9 +97,10 @@ section img {
 }
 
 /* Show the lower half of img/7.jpg in the card */
+/* This makes the image fill the card and focuses on the bottom part */
 section img[src$="7.jpg"] {
   object-fit: cover;      /* Fill the area, cropping if needed */
-  object-position: bottom;/* Focus on the bottom (lower half) of the image */
+  object-position: bottom;/* Focus on the lower half of the image */
 }
 
 /* Hide milestone details by default */
@@ -115,36 +117,39 @@ section img[src$="7.jpg"] {
   margin-top: 8px;
 }
 
-/* Show details on hover for desktop */
+/* Show details smoothly on hover */
 section > div:hover .details {
   opacity: 1;
   max-height: 200px;
   padding: 8px 6px;
 }
 
-/* Responsive: Stack timeline vertically on small screens */
+/* Responsive: Stack timeline vertically on small screens and make cards full width */
 @media (max-width: 700px) {
   section {
-    flex-direction: column;
+    flex-direction: column;   /* Stack cards vertically */
     gap: 18px;
     overflow-x: visible;
     scroll-snap-type: none;
-    padding: 16px 4px;
+    padding: 16px 0;          /* Remove side padding for full width */
   }
   section > div {
-    width: 100%;
+    width: 100%;              /* Card fills the available width */
     min-width: 0;
-  }
-  /* Make sure details always extend downward */
-  .details {
-    position: static;      /* Keep details in normal flow */
-    width: 100%;           /* Take full width of the card */
+    box-sizing: border-box;   /* Include padding and border in width */
+    margin: 0;
+    border-radius: 0;
     left: 0;
     right: 0;
-    top: auto;
-    bottom: auto;
-    z-index: 1;
+    transition: box-shadow 0.3s, transform 0.3s;
   }
+  section > div:hover {
+    transform: none;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+  /* Show details on tap/active for mobile */
   section > div:active .details,
   section > div:focus .details {
     opacity: 1;
